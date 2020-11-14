@@ -109,7 +109,7 @@ SELECT SUBSTR(mus_nome, 1, 1) "Primeira letra da Musica", mus_duracao "Duraçao"
 FROM musica;
 
 /*G - ESCREVA UMA BUSCA QUE MOSTRE O CD_NOME E O NUMERO DE DIAS ENTRE A DATA ATUAL E A DATA DE LANÇAMENTO*/
-SELECT cd_nome, cd_dt_lancamento "Data de Lançamento", current_date,(current_date - cd_dt_lancamento) "Diferença entre hoje e data de lançamento"
+SELECT cd_nome, cd_dt_lancamento "Data de Lançamento", current_date, ROUND((current_date - cd_dt_lancamento), 1) || ' DIAS' "Diferença entre hoje e data de lançamento"
 FROM cd;
 
 /*H - ESCREVA UMA BUSCA SEMELHANTE A ANTERIOR QUE MOSTRE UMA COLUNA COM 15 DIAS APOS A CD_DT_LANCAMENTO*/ 
@@ -124,7 +124,6 @@ WHERE cd_id IN (1,2,3);
 /*J - ESCREVA UMA CONSULTA QUE RETORNE OS 5 PRIMEIROS CARACTERES DE MUS_NOME E OUTRA COLUNA COM MUS_NOME*/
 SELECT SUBSTR(mus_nome, 1, 5), mus_nome
 FROM musica;
-
 
 /*EXERCÍCIOS DA AULA 07*/
 
@@ -177,4 +176,5 @@ FROM autor a INNER JOIN musica_autor ma
 ON a.aut_id = ma.aut_id INNER JOIN musica m
 ON m.mus_id = ma.mus_id
 GROUP BY a.aut_nome;
+
 
